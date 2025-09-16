@@ -1,0 +1,108 @@
+
+/**
+  * Variables and base styles
+  */
+:root {
+  --border: #e5e7eb;
+  --bg: #ffffff;
+  --bg-hover: #f8fafc;
+  --bg-selected: #eef6ff;
+  --text: #111827;
+  --muted: #6b7280;
+  --green: #22c55e;
+}
+
+* { box-sizing: border-box; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+body { margin: 0; color: var(--text); background: var(--bg); }
+
+/**
+  * Layout and components
+  */
+
+.container {
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: #f9fafb;
+}
+
+.toolbar h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.toolbar .spacer { flex: 1; }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.button:hover { background: var(--bg-hover); }
+
+.table {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-collapse: collapse;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+.table thead th, .table tbody td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.table thead {
+  background: #f3f4f6;
+}
+
+.row {
+  transition: background 120ms ease;
+}
+.row:hover {
+  background: var(--bg-hover);
+}
+
+.row.selected {
+  background: var(--bg-selected);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--muted);
+}
+.dot.green { background: var(--green); }
+
+.checkbox {
+  width: 16px; height: 16px;
+}
+
+.small-muted { color: var(--muted); font-size: 13px; }

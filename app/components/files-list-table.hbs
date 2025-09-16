@@ -1,0 +1,61 @@
+<div class="toolbar" role="region" aria-label="Selection toolbar">
+  <Ui::Checkbox
+    @checked={{this.allChecked}}
+    @indeterminate={{this.someChecked}}
+    {{on "change" this.toggleAll}}
+    aria-label="Select all files"
+  />
+  <h2>{{this.selectionLabel}}</h2>
+  <div class="spacer"></div>
+  <button class="button" type="button" {{on "click" this.downloadSelected}}>
+    <span aria-hidden="true">⬇️</span>
+    <span>Download Selected</span>
+  </button>
+</div>
+
+<table class="table" role="table" aria-label="Files">
+  <thead>
+    <tr>
+      <th scope="col" style="width:36px;"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Device</th>
+      <th scope="col">Path</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each this.files as |file|}}
+      <tr
+        class="row {{if (this.rowSelected file) "selected"}}"
+      >
+        <td>
+          <input
+            type="checkbox"
+            class="checkbox"
+            checked={{this.rowSelected file}}
+            {{on "change" (fn this.toggleRow file)}}
+            aria-label="Select {{file.name}} on {{file.device}}"
+          />
+        </td>
+
+        <td>{{file.name}}</td>
+        <td>{{file.device}}</td>
+        <td><span class="small-muted">{{file.path}}</span></td>
+
+        <td>
+          <span class="status">
+            <span class="dot {{if (this.isAvailable file) "green"}}"></span>
+            {{this.statusLabel file}}
+          </span>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{#unless this.files.length}}
+  <div class="empty-state" role="region" aria-live="polite">
+    <p>No files available.</p>
+  </div>
+{{/unless}}

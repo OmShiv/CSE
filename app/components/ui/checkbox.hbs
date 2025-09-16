@@ -1,0 +1,8 @@
+<input
+  type="checkbox"
+  class="checkbox"
+  checked={{@checked}}
+  aria-checked={{if @indeterminate "mixed" (if @checked "true" "false")}}
+  {{indeterminate @indeterminate}}
+  ...attributes
+/>
