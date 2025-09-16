@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (environment) {
-  return {
+  const ENV = {
     modulePrefix: 'cs-exercise',
     environment,
     rootURL: '/',
@@ -9,4 +9,12 @@ module.exports = function (environment) {
     EmberENV: { EXTEND_PROTOTYPES: false },
     APP: {}
   };
+
+  if (environment === 'test') {
+    ENV.locationType = 'none';
+    ENV.APP.autoboot = false;
+    ENV.APP.rootElement = '#ember-testing';
+  }
+
+  return ENV;
 };

@@ -7,7 +7,7 @@
   />
   <h2>{{this.selectionLabel}}</h2>
   <div class="spacer"></div>
-  <button class="button" type="button" {{on "click" this.downloadSelected}}>
+  <button class="download-button" type="button" {{on "click" this.downloadSelected}}>
     <span aria-hidden="true">⬇️</span>
     <span>Download Selected</span>
   </button>
@@ -26,9 +26,7 @@
 
   <tbody>
     {{#each this.files as |file|}}
-      <tr
-        class="row {{if (this.isSelected file) "selected"}}"
-      >
+      <tr class="row {{if (this.isSelected file) "selected"}}">
         <td>
           <input
             type="checkbox"
