@@ -27,13 +27,13 @@
   <tbody>
     {{#each this.files as |file|}}
       <tr
-        class="row {{if (this.rowSelected file) "selected"}}"
+        class="row {{if (this.isSelected file) "selected"}}"
       >
         <td>
           <input
             type="checkbox"
             class="checkbox"
-            checked={{this.rowSelected file}}
+            checked={{this.isSelected file}}
             {{on "change" (fn this.toggleRow file)}}
             aria-label="Select {{file.name}} on {{file.device}}"
           />

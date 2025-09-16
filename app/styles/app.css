@@ -60,9 +60,9 @@ body { margin: 0; color: var(--text); background: var(--bg); }
 .table {
   width: 100%;
   border: 1px solid var(--border);
-  border-collapse: collapse;
   border-radius: 0 0 8px 8px;
-  overflow: hidden;
+  border-collapse: collapse;
+  box-sizing: border-box;
 }
 
 .table thead th, .table tbody td {

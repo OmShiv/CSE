@@ -38,19 +38,20 @@ export default class FileTableComponent extends Component {
 
   /**
    * Utility Methods
+   * Converting to Arrow function to auto-bind `this`
    */
-  isAvailable(file) {
+  isAvailable = (file) => {
     return file.status.toLowerCase() === 'available';
   }
 
-  statusLabel(file) {
-    const s = file.status.toLowerCase();
-    return s === 'available' ? 'Available' : 'Scheduled';
+  statusLabel = (file) => {
+    return this.isAvailable(file) ? 'Available' : 'Scheduled';
   }
 
-  // rowSelected(file) {
-  //   return this.selected && this.selected.includes(this.getUniqueId(file));
-  // }
+  isSelected = (file) => {
+    const key = this.getUniqueId(file);
+    return this.selected.includes(key);
+  }
 
   @action
   toggleRow(file, event) {
@@ -59,7 +60,6 @@ export default class FileTableComponent extends Component {
 
     if (checked) {
       if (!this.selected.includes(key)) {
-        // IMPORTANT: reassign to trigger reactivity
         this.selected = [...this.selected, key];
       }
     } else {
